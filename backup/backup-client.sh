@@ -1,5 +1,5 @@
 #!/bin/bash
-VERSION=1.0.0
+VERSION=1.0.1
 DRY_RUN=false
 
 ##
@@ -99,7 +99,7 @@ function setup() {
     SHELL=/bin/sh
     PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
     
-    59 12 * * * $(pwd)/$(basename $0) run\" > /etc/cron.d/backup-client"
+    59 12 * * * root $(pwd)/$(basename $0) run\" > /etc/cron.d/backup-client"
     
     if [ $DRY_RUN != true ]; then
         # Set crontab
@@ -107,7 +107,7 @@ function setup() {
 SHELL=/bin/sh
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
-        59 12 * * * $(pwd)/$(basename $0) run" > /etc/cron.d/backup-client
+59 12 * * * root $(pwd)/$(basename $0) run" > /etc/cron.d/backup-client
     fi
 }
 

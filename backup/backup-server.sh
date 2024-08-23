@@ -1,5 +1,5 @@
 #!/bin/bash
-VERSION=1.0.0
+VERSION=1.0.1
 DRY_RUN=false
 
 ##
@@ -128,11 +128,11 @@ function setup() {
     SHELL=/bin/sh
     PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
     
-    0   12  *   *   *               $(pwd)/$(basename $0) job:daily
-    15  12  *   *   6               $(pwd)/$(basename $0) job:weekly
-    30  12  30  4,6,9,11 *          $(pwd)/$(basename $0) job:monthly
-    30  12  31  1,3,5,7,8,10,12 *   $(pwd)/$(basename $0) job:monthly
-    30  12  28  2   *               $(pwd)/$(basename $0) job:monthly
+    0   12  *   *   *               root $(pwd)/$(basename $0) job:daily
+    15  12  *   *   6               root $(pwd)/$(basename $0) job:weekly
+    30  12  30  4,6,9,11 *          root $(pwd)/$(basename $0) job:monthly
+    30  12  31  1,3,5,7,8,10,12 *   root $(pwd)/$(basename $0) job:monthly
+    30  12  28  2   *               root $(pwd)/$(basename $0) job:monthly
     \" > /etc/cron.d/backup-server"
     
     if [ $DRY_RUN != true ]; then
@@ -141,11 +141,11 @@ function setup() {
 SHELL=/bin/sh
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
-0   12  *   *   *               $(pwd)/$(basename $0) job:daily
-15  12  *   *   6               $(pwd)/$(basename $0) job:weekly
-30  12  30  4,6,9,11 *          $(pwd)/$(basename $0) job:monthly
-30  12  31  1,3,5,7,8,10,12 *   $(pwd)/$(basename $0) job:monthly
-30  12  28  2   *               $(pwd)/$(basename $0) job:monthly
+0   12  *   *   *               root $(pwd)/$(basename $0) job:daily
+15  12  *   *   6               root $(pwd)/$(basename $0) job:weekly
+30  12  30  4,6,9,11 *          root $(pwd)/$(basename $0) job:monthly
+30  12  31  1,3,5,7,8,10,12 *   root $(pwd)/$(basename $0) job:monthly
+30  12  28  2   *               root $(pwd)/$(basename $0) job:monthly
         " > /etc/cron.d/backup-server
     fi
 }
